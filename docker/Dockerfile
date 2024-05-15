@@ -1,6 +1,4 @@
-FROM amazonlinux:2
-FROM amazoncorretto:8
-FROM maven:3.6-amazoncorretto-8
+FROM public.ecr.aws/docker/library/maven:3.6-amazoncorretto-8
 
 ARG spark_uid=1000
 RUN yum install -y procps
