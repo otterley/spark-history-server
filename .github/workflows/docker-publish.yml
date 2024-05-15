@@ -8,11 +8,8 @@ on:
     tags: [ 'v*.*.*' ]
 
 env:
-  # Use docker.io for Docker Hub if empty
   REGISTRY: public.ecr.aws/h2j7m0t8
-  # github.repository as <account>/<repo>
   IMAGE_NAME: spark-history-server
-
 
 jobs:
   build:
