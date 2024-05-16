@@ -13,7 +13,11 @@ env:
 
 jobs:
   build:
-    runs-on: codebuild-spark-history-server-x86-${{ github.run_id }}-${{ github.run_attempt }}
+    strategy:
+      matrix:
+        arch: [arm64, x86]
+        
+    runs-on: codebuild-spark-history-server-${{ matrix.arch }}-${{ github.run_id }}-${{ github.run_attempt }}
     permissions:
       contents: read
       id-token: write
@@ -57,6 +61,6 @@ jobs:
         with:
           context: docker/.
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}-x86
+          tags: ${{ steps.meta.outputs.tags }}-${{ matrix.arch }}
           labels: ${{ steps.meta.outputs.labels }}
           
