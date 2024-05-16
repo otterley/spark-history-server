@@ -65,6 +65,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
     
   manifest:
+    needs: build
     runs-on: codebuild-spark-history-server-arm64-${{ github.run_id }}-${{ github.run_attempt }}
     permissions:
       contents: read
